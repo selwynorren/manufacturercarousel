@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>manufacturercarousel</name>
+	<displayName><![CDATA[Manufacturers Carousel]]></displayName>
+	<version><![CDATA[1.0.0]]></version>
+	<description><![CDATA[Manufacturer logo carousel for front page]]></description>
+	<author><![CDATA[Selwyn Orren]]></author>
+	<tab><![CDATA[front_office_features]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+</module>
