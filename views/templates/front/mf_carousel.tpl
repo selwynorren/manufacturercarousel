@@ -16,7 +16,7 @@
 		<div class="col-xs-12 col-sm-12">
 			<h2 class="title_block">{$MF_TITLE|escape:'htmlall':'UTF-8'}</h2>
 		</div>
-		<div class="col-sm-12">
+		<div class="col-xs-12 col-sm-12">
 			<div class="owl-carousel owl-theme">
 			{foreach from=$manufacturers item=manufacturer}
 				<div>
