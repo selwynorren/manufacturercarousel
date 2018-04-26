@@ -1,0 +1,14 @@
+module_name: Manufacturers Carousel
+compatible_versions: 1.0.3+
+author: Linuxweb
+category: Front Office Features
+tags:
+  - Manufacturer
+  - Manufacturer Carousel
+  - Front Office Features
+  - Logo Carousel
+description_short: Manufacturer logo carousel for front page.
+description: description.md
+images:
+  - image-1.png
+license: AFL

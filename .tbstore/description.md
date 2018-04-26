@@ -1,0 +1,1 @@
+Manufacturer logo carousel for front page
