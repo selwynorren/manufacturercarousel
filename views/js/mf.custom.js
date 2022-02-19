@@ -16,15 +16,16 @@
 		loop:true,
 		margin:20,
 		nav:false,
+		autoHeight:true,
 		responsive:{
 			0:{
-				items:1
+				items:MOBILE
 			},
 			600:{
-				items:3
+				items:TABLET
 			},
 			1000:{
-				items:4
+				items:DESKTOP
 			}
 		}
 	});

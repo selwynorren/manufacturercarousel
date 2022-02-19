@@ -11,10 +11,16 @@
  *  @copyright 2017 Linuxweb
  *  @license   LICENSE.md
  *}
+<script type="text/javascript">
+var MOBILE = "{$MF_PER_ROW_MOBILE}";
+var TABLET = "{$MF_PER_ROW_TABLET}";
+var DESKTOP = "{$MF_PER_ROW_DESKTOP}";
+</script>
 {if $manufacturers}
-	<div class="block">
-		<div class="col-xs-12 col-sm-12">
-			<h2 class="title_block">{$MF_TITLE|escape:'htmlall':'UTF-8'}</h2>
+	<div class="tm-home col-xs-12">
+		<div class="tm-hp text-center">
+			<h2><span class="tm-over">Our <span> Favourite </span>Brands</span></h2>
+			<p>{$MF_DESCRIPTION|escape:'htmlall':'UTF-8'}</p>
 		</div>
 		<div class="col-xs-12 col-sm-12">
 			<div class="owl-carousel owl-theme">

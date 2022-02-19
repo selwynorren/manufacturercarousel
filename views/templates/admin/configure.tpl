@@ -18,6 +18,6 @@
 		{l s='This module will allow you to boast about the brands you sell in your store, each logo links to the specific brand page, which should increase your conversion rate!' mod='manufacturercarousel'}
 	</p>
 	<p>
-		{l s='Set the essential configuration using the form bellow.' mod='manufacturercarousel'}
+		{l s='Set the essential configuration using the form below.' mod='manufacturercarousel'}
 	</p>
 </div>

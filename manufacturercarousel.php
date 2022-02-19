@@ -48,9 +48,12 @@ class Manufacturercarousel extends Module
      */
     public function install()
     {
-        Configuration::updateValue('MF_TITLE', 'Our Brands');
+        Configuration::updateValue('MF_TITLE', 'Our Favourite Brands');
+        Configuration::updateValue('MF_DESCRIPTION', 'Browse our favourite brands');
         Configuration::updateValue('MF_MAN_NUMBER', 0);
-        Configuration::updateValue('MF_PER_ROW', 4);
+        Configuration::updateValue('MF_PER_ROW_DESKTOP', 4);
+        Configuration::updateValue('MF_PER_ROW_TABLET', 3);
+        Configuration::updateValue('MF_PER_ROW_MOBILE', 1);
         Configuration::updateValue('MF_MAN_ORDER', 'name_asc');
         Configuration::updateValue('MF_SHOW_MAN_NAME', 0);
 
@@ -62,8 +65,11 @@ class Manufacturercarousel extends Module
     public function uninstall()
     {
         Configuration::deleteByName('MF_TITLE');
+        Configuration::deleteByName('MF_DESCRIPTION');
         Configuration::deleteByName('MF_MAN_NUMBER');
-        Configuration::deleteByName('MF_PER_ROW');
+        Configuration::deleteByName('MF_PER_ROW_DESKTOP');
+        Configuration::deleteByName('MF_PER_ROW_TABLET');
+        Configuration::deleteByName('MF_PER_ROW_MOBILE');
         Configuration::deleteByName('MF_MAN_ORDER');
         Configuration::deleteByName('MF_SHOW_MAN_NAME');
 
@@ -140,6 +146,14 @@ class Manufacturercarousel extends Module
                     array(
                         'col' => 4,
                         'type' => 'text',
+                        'desc' => $this->l('Show manufacturer description'),
+                        'name' => 'MF_DESCRIPTION',
+                        'label' => $this->l('Provide a description for the heading'),
+                        'required' => true,
+                    ),
+                    array(
+                        'col' => 4,
+                        'type' => 'text',
                         'desc' => $this->l('Number of manufacturers to display (Enter 0 to display all)'),
                         'name' => 'MF_MAN_NUMBER',
                         'label' => $this->l('Number of Manufacturers'),
@@ -148,9 +162,25 @@ class Manufacturercarousel extends Module
                     array(
                         'col' => 4,
                         'type' => 'text',
-                        'desc' => $this->l('How many logo\'s should be visible'),
-                        'name' => 'MF_PER_ROW',
-                        'label' => $this->l('Logo\'s per row'),
+                        'desc' => $this->l('How many logo\'s should be visible on desktops'),
+                        'name' => 'MF_PER_ROW_DESKTOP',
+                        'label' => $this->l('Logo\'s per row (Desktop)'),
+                        'required' => true,
+                    ),
+                    array(
+                        'col' => 4,
+                        'type' => 'text',
+                        'desc' => $this->l('How many logo\'s should be visible on tablets'),
+                        'name' => 'MF_PER_ROW_TABLET',
+                        'label' => $this->l('Logo\'s per row (Tablet)'),
+                        'required' => true,
+                    ),
+                    array(
+                        'col' => 4,
+                        'type' => 'text',
+                        'desc' => $this->l('How many logo\'s should be visible on mobiles'),
+                        'name' => 'MF_PER_ROW_MOBILE',
+                        'label' => $this->l('Logo\'s per row (Mobile)'),
                         'required' => true,
                     ),
                     array(
@@ -214,9 +244,12 @@ class Manufacturercarousel extends Module
     protected function getConfigFormValues()
     {
         return array(
-            'MF_TITLE' => Configuration::get('MF_TITLE', 'Our Brands'),
+            'MF_TITLE' => Configuration::get('MF_TITLE', 'Our Favourite Brands'),
+            'MF_DESCRIPTION' => Configuration::get('MF_DESCRIPTION', 'Browse our favourite brands'),
             'MF_MAN_NUMBER' => Configuration::get('MF_MAN_NUMBER', 0),
-            'MF_PER_ROW' => Configuration::get('MF_PER_ROW', 0),
+            'MF_PER_ROW_DESKTOP' => Configuration::get('MF_PER_ROW_DESKTOP', 0),
+            'MF_PER_ROW_TABLET' => Configuration::get('MF_PER_ROW_TABLET', 0),
+            'MF_PER_ROW_MOBILE' => Configuration::get('MF_PER_ROW_MOBILE', 0),
             'MF_MAN_ORDER' => Configuration::get('MF_MAN_ORDER', 'name_asc'),
             'MF_SHOW_MAN_NAME' => Configuration::get('MF_SHOW_MAN_NAME', 0),
         );
@@ -264,6 +297,7 @@ class Manufacturercarousel extends Module
 
         $this->context->controller->addJS($this->_path.'/views/js/mf.custom.js');
         $this->context->controller->addCSS($this->_path.'/views/css/mf.theme.default.css');
+
     }
 
     public function hookDisplayHome()
@@ -294,8 +328,11 @@ class Manufacturercarousel extends Module
         $this->smarty->assign(array(
             'manufacturers' => $manufacturers,
             'MF_TITLE' => Configuration::get('MF_TITLE'),
+            'MF_DESCRIPTION' => Configuration::get('MF_DESCRIPTION'),
             'MF_SHOW_MAN_NAME' => (int)Configuration::get('MF_SHOW_MAN_NAME'),
-            'MF_PER_ROW' => (int)Configuration::get('MF_PER_ROW'),
+            'MF_PER_ROW_DESKTOP' => (int)Configuration::get('MF_PER_ROW_DESKTOP'),
+            'MF_PER_ROW_TABLET' => (int)Configuration::get('MF_PER_ROW_TABLET'),
+            'MF_PER_ROW_MOBILE' => (int)Configuration::get('MF_PER_ROW_MOBILE'),
             'link' => $this->context->link,
             'view_all_mnf' => $this->context->link->getPageLink('manufacturer')
         ));
